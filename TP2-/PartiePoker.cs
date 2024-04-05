@@ -30,12 +30,7 @@ namespace Atelier2C6_101_2024.Application.Poker
             u.Titrer("Poker 2C6 ");
             InitTable();
 
-            /*lePaquet.Afficher();
-            while (true)
-            {
-                Console.ReadKey();
-                lePaquet.Afficher();
-            }*/
+            
 
             lePaquet.Brasser();
             for (int i = 0; i < 5; i++)
@@ -50,6 +45,8 @@ namespace Atelier2C6_101_2024.Application.Poker
             {
                _mainsJoueurs[i].Afficher();
             }
+
+            
         }
 
         void InitTable()

@@ -25,6 +25,7 @@ namespace Atelier2C6_101_2024.Application.Poker
             {
                 _lesCartes[i].Afficher(true, i, _idJoueur);
             }
+            Console.WriteLine("\n");
         }
 
 
