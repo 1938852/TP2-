@@ -28,10 +28,11 @@ namespace Atelier2C6_101_2024.Application.Poker
         {
             Util u = new Util();
             u.Titrer("Poker 2C6 ");
+            u.Pause();
             InitTable();
 
             
-
+            // Donne 5 cartes aleatoires a chaque joueur
             lePaquet.Brasser();
             for (int i = 0; i < 5; i++)
             {
@@ -43,10 +44,18 @@ namespace Atelier2C6_101_2024.Application.Poker
 
             for (int i = 0; i < 4; i++)
             {
+                _mainsJoueurs[i].Trier();
                _mainsJoueurs[i].Afficher();
+                Evaluateur evaluateur = new Evaluateur(_mainsJoueurs[i]);
+                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                Console.BackgroundColor = ConsoleColor.Yellow;
+                Console.SetCursorPosition(35, (i * 4) + 4);
+                evaluateur.Evaluer();
             }
 
-            
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.SetCursorPosition(0, 20);
         }
 
         void InitTable()
@@ -54,7 +63,7 @@ namespace Atelier2C6_101_2024.Application.Poker
             Console.BackgroundColor = (ConsoleColor)COULEUR_TAPIS;
             Console.ForegroundColor = (ConsoleColor)COULEUR_TEXTE;
 
-            // a ligne suivante permet d'afficher des symboles unicode (coeur trèfle etc...
+            // La ligne suivante permet d'afficher les symboles unicodes des types de carte
             Console.OutputEncoding = System.Text.Encoding.Unicode;
             Console.Clear();
         }

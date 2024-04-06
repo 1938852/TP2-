@@ -12,9 +12,8 @@ namespace Atelier2C6_101_2024.Application.Poker
         // ♥♣♦♠
         public int _Sorte {  get; set; }    
         public int _Valeur { get; set; }
-
-        string _valeurTexte = "2";
-        string _sorteTexte = "Pique";
+        public string _valeurTexte = "2";
+        public string _sorteTexte = "Pique";
 
         const int COULEUR_PIQUE = 0;
         const int COULEUR_TREFLE = (int)ConsoleColor.DarkBlue;
@@ -65,7 +64,7 @@ namespace Atelier2C6_101_2024.Application.Poker
             }
             else
             {
-                Console.WriteLine($"\n{_valeurTexte} de {_sorteTexte}");
+                Console.Write($"{_valeurTexte} de {_sorteTexte}");
             }
         }
 
@@ -87,7 +86,7 @@ namespace Atelier2C6_101_2024.Application.Poker
             }
         }
 
-        private void SetValeurTexte()
+        public void SetValeurTexte()
         {
             switch (_Valeur)
             {
@@ -134,7 +133,7 @@ namespace Atelier2C6_101_2024.Application.Poker
                     throw new ArgumentException($"Erreur {_Valeur} valeur de carte invalide");
             }
         }
-        private void SetSorteTexte()
+        public void SetSorteTexte()
         {
             switch (_Sorte)
             {

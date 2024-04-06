@@ -7,10 +7,7 @@ namespace TP2_
     {
         static Util u = new Util();
         static void Main(string[] args)
-        {
-            u.Titrer("Partie de Poker");
-            u.Pause();
-
+        {          
             PartiePoker pp = new PartiePoker();
             pp.Jouer();
         }
