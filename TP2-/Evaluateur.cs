@@ -81,15 +81,20 @@ namespace Atelier2C6_101_2024.Application.Poker
             }
         }
 
+        // J'ai pris une mauvaise approche pour l'evaluation qui m'empeche de valider la valeur des mains...
         private string SequenceCouleur()
         {
-            string contenu = "Séquence couleur";
+            _Main._lesCartes[0].SetValeurTexte();
+            _Main._lesCartes[4].SetValeurTexte();
+            _Main._lesCartes[0].SetSorteTexte();
+            string contenu = $"Séquence couleur de de {_Main._lesCartes[0]._valeurTexte} à {_Main._lesCartes[4]._valeurTexte}, {_Main._lesCartes[0]._sorteTexte}";
 
             return contenu;
         }
         private string Carre()
         {
-            string contenu = "Carré";
+            _Main._lesCartes[1].SetValeurTexte();
+            string contenu = $"Carré de {_Main._lesCartes[1]._valeurTexte}";
 
             return contenu;
         }
@@ -101,18 +106,22 @@ namespace Atelier2C6_101_2024.Application.Poker
         }
         private string Couleur()
         {
-            string contenu = "Couleur";
+            _Main._lesCartes[0].SetSorteTexte();
+            string contenu = $"Couleur: {_Main._lesCartes[0]._sorteTexte}";
 
             return contenu;
         }
         private string Sequence()
         {
-            string contenu = "Séquence";
+            _Main._lesCartes[0].SetValeurTexte();
+            _Main._lesCartes[4].SetValeurTexte();
+            string contenu = $"Séquence de {_Main._lesCartes[0]._valeurTexte} à {_Main._lesCartes[4]._valeurTexte}";
 
             return contenu;
         }
         private string Brelan()
         {
+            
             string contenu = "Brelan";
 
             return contenu;

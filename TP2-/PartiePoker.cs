@@ -16,6 +16,7 @@ namespace Atelier2C6_101_2024.Application.Poker
         MainJoueur[] _mainsJoueurs = new MainJoueur[4];
 
         Paquet lePaquet = new Paquet();
+        bool partieEnCours = true;
 
         public PartiePoker()
         {
@@ -29,32 +30,42 @@ namespace Atelier2C6_101_2024.Application.Poker
             Util u = new Util();
             u.Titrer("Poker 2C6 ");
             u.Pause();
-            InitTable();
 
-            
-            // Donne 5 cartes aleatoires a chaque joueur
-            lePaquet.Brasser();
-            for (int i = 0; i < 5; i++)
+            while(partieEnCours == true)
             {
-                for (int j = 0; j < 4; j++)
+                InitTable();
+
+
+                // Donne 5 cartes aleatoires a chaque joueur
+                lePaquet.Brasser();
+                for (int i = 0; i < 5; i++)
                 {
-                    _mainsJoueurs[j].InitCarte(i, lePaquet.Distribuer());
+                    for (int j = 0; j < 4; j++)
+                    {
+                        _mainsJoueurs[j].InitCarte(i, lePaquet.Distribuer());
+                    }
+                }
+
+                for (int i = 0; i < 4; i++)
+                {
+                    _mainsJoueurs[i].Trier();
+                    _mainsJoueurs[i].Afficher();
+                    Evaluateur evaluateur = new Evaluateur(_mainsJoueurs[i]);
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                    Console.BackgroundColor = ConsoleColor.Yellow;
+                    Console.SetCursorPosition(35, (i * 4) + 4);
+                    evaluateur.Evaluer();
+                }
+
+                Console.SetCursorPosition(0, 20);
+                Console.Write("Une autre ronde? (o/n)");
+                if(u.SaisirChar() == 'n' || u.SaisirChar() == 'N')
+                {
+                    partieEnCours = false;
                 }
             }
-
-            for (int i = 0; i < 4; i++)
-            {
-                _mainsJoueurs[i].Trier();
-               _mainsJoueurs[i].Afficher();
-                Evaluateur evaluateur = new Evaluateur(_mainsJoueurs[i]);
-                Console.ForegroundColor = ConsoleColor.DarkBlue;
-                Console.BackgroundColor = ConsoleColor.Yellow;
-                Console.SetCursorPosition(35, (i * 4) + 4);
-                evaluateur.Evaluer();
-            }
-
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.BackgroundColor = ConsoleColor.White;
+            
+            
             Console.SetCursorPosition(0, 20);
         }
 
